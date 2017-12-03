@@ -1,14 +1,16 @@
-<?php
-/*
-* @Author: mark
-* @Date:   2014-05-07 14:19:04
-* @Last Modified by:   mark
-* @Last Modified time: 2014-05-07 15:24:42
-*/
+<?php declare(strict_types=1);
 
-namespace Bearlikelion\TwigJsonTools;
+namespace Mareksokol\TwigJsonTools;
 
-class Extension extends \Twig_Extension
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
+
+/**
+ * Class Extension
+ * @package Mareksokol\TwigJsonTools
+ */
+class Extension extends AbstractExtension
 {
 	/**
 	 * Define Twig filters
@@ -17,11 +19,11 @@ class Extension extends \Twig_Extension
 	 * {{ string|json_encode }}
 	 * @return array
 	 */
-	public function getFilters()
+	public function getFilters(): array
 	{
-		return array(
-			new \Twig_SimpleFilter('json_decode', array($this, 'jsonDecode'))
-		);
+		return [
+			new TwigFilter('json_decode', array($this, 'jsonDecode'))
+		];
 	}
 
 	/**
@@ -31,12 +33,12 @@ class Extension extends \Twig_Extension
 	 * {{ json_encode(string) }}
 	 * @return array
 	 */
-	public function getFunctions()
+	public function getFunctions(): array
 	{
-		return array(
-			'json_decode'  => new \Twig_SimpleFunction('json_decode', [$this, 'jsonDecode']),
-			'json_encode' => new \Twig_SimpleFunction('json_encode', [$this, 'jsonEncode']),
-		);
+		return [
+			'json_decode'  => new TwigFunction('json_decode', [$this, 'jsonDecode']),
+			'json_encode' => new TwigFunction('json_encode', [$this, 'jsonEncode']),
+		];
 	}
 
 	/**
@@ -44,7 +46,7 @@ class Extension extends \Twig_Extension
 	 * @param  string $string
 	 * @return object
 	 */
-	public function jsonDecode($string)
+	public function jsonDecode(string $string): object
 	{
 		return json_decode($string);
 	}
@@ -54,13 +56,13 @@ class Extension extends \Twig_Extension
 	 * @param  array $array
 	 * @return string
 	 */
-	public function jsonEncode($array)
+	public function jsonEncode(array $array): string
 	{
 		return json_encode($array);
 	}
 
 	/** Extension name */
-	public function getName()
+	public function getName(): string
 	{
 		return 'json_extension';
 	}

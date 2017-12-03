@@ -1,5 +1,5 @@
 {
-	"name": "bearlikelion/twig-jsontools",
+	"name": "mareksokol/twig-jsontools",
 	"type": "library",
 	"description": "A Twig extension to encode and decode json.",
 	"keywords": ["twig", "extension", "json"],
@@ -8,11 +8,14 @@
 		{
 			"name": "Mark Arneman",
 			"homepage": "http://arneman.me"
+		},
+		{
+			"name": "Marek Sokol"
 		}
 	],
 	"require": {
-		"php": ">=5.3.0",
-		"twig/twig": "*"
+		"php": ">=7.1.0",
+		"twig/twig": "^2.0"
 	},
 	"autoload": {
 		"files": ["Extension.php"]

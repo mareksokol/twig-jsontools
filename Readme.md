@@ -9,14 +9,14 @@ A simple twig extension to provide json encode and decode filters and functions 
 ## Installation
 ```
 "require": {
-	"bearlikelion/twig-jsontools": "dev-master",
+	"mareksokol/twig-jsontools": "dev-master",
 }
 ```
 
 ## Example
 ```PHP
-$twig = new Twig_Environment(new Twig_Loader_Filesystem('Views'));
-$twig->addExtension(new Bearlikelion\TwigJsonTools\Extension);
+$twig = new \Twig\Environment(new \Twig\Loader\FilesystemLoader('Views'));
+$twig->addExtension(new \Mareksokol\TwigJsonTools\Extension);
 ```
 
 ```html
